@@ -5,6 +5,15 @@ export async function POST(req: Request) {
   try {
     const { name, email, subject, message } = await req.json();
 
+    // Validate environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Missing email configuration');
+      return NextResponse.json(
+        { error: 'Email configuration is missing' },
+        { status: 500 }
+      );
+    }
+
     // Create a transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -13,6 +22,17 @@ export async function POST(req: Request) {
         pass: process.env.EMAIL_PASS,
       },
     });
+
+    // Verify transporter configuration
+    try {
+      await transporter.verify();
+    } catch (error) {
+      console.error('Transporter verification failed:', error);
+      return NextResponse.json(
+        { error: 'Email service configuration error' },
+        { status: 500 }
+      );
+    }
 
     // Email content
     const mailOptions = {
@@ -44,7 +64,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'Failed to send email. Please try again later.' },
       { status: 500 }
     );
   }
