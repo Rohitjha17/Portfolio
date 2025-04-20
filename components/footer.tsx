@@ -22,7 +22,7 @@ export function Footer() {
               </a>
             </Button>
             <Button asChild size="icon" variant="ghost" className="rounded-full hover:text-primary hover:bg-primary/10">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/rohit-kumar-jha-848453248/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </Button>
