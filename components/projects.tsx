@@ -8,18 +8,29 @@ import { Button } from "@/components/ui/button"
 import { Github, ExternalLink, X } from "lucide-react"
 import Image from "next/image"
 
-export function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null)
+interface Project {
+  id: number
+  title: string
+  description: string
+  image: string
+  tags: string[]
+  github: string
+  demo: string
+  details: string[]
+}
 
-  const projects = [
+export function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  const projects: Project[] = [
     {
       id: 1,
       title: "Video Learning Management System",
       description: "A modern video learning platform with admin dashboard, playlist creation, and analytics tracking.",
       image: "/images/project1.png",
       tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase", "Cloudinary", "Chart.js", "Framer Motion"],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Rohitjha17/Portfolio",
+      demo: "https://eoxs.vercel.app/",
       details: [
         "Developed a modern video learning platform using Next.js, React, TypeScript, and Firebase with Cloudinary CDN for secure video hosting.",
         "Engineered an intuitive admin dashboard with advanced filtering, sorting, and search capabilities for content management.",
@@ -33,8 +44,8 @@ export function Projects() {
         "A 2D shooting game with multiple levels, weapons, and a score board using HTML Canvas and JavaScript.",
       image: "/images/project2.png",
       tags: ["HTML", "CSS", "JavaScript", "Canvas", "GSAP"],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Rohitjha17/Portfolio",
+      demo: "https://asteroid-game-alpha.vercel.app/",
       details: [
         "A 2D Game with Multiple Levels and Weapons with a Score Board.",
         "Local storage is getting used for storing high score.",

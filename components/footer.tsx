@@ -17,7 +17,7 @@ export function Footer() {
 
           <div className="flex space-x-4">
             <Button asChild size="icon" variant="ghost" className="rounded-full hover:text-primary hover:bg-primary/10">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/Rohitjha17" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Github size={20} />
               </a>
             </Button>
